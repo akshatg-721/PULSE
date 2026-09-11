@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSE — The Heartbeat of Campus</title>
+<style>
+  body {
+    background-color: #0a0e16;
+    color: #f2f3f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.5;
+  }
 
+  a {
+    color: #f2f3f6;
+    text-decoration: none;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #262d40;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    padding: 40px;
+    border-bottom: 1px solid #262d40;
+  }
+
+  h1 {
+    font-size: 42px;
+    max-width: 600px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 16px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .card {
+    background-color: #131826;
+    border: 1px solid #262d40;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .card-thumb {
+    background-color: #3b3f6b;
+    height: 140px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  footer {
+    padding: 20px 40px;
+    text-align: center;
+    color: #8b8f98;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top"><strong>PULSE</strong></a>
+
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#reels">Reels</a></li>
+      <li><a href="#clubs">Clubs</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <a href="#login">Login</a>
+</header>
+
+<main>
+
+  <section id="hero">
+    <h1>The heartbeat of campus.</h1>
+    <p>Discover what's happening around you — register in a tap and never miss what your clubs are running.</p>
+    <a class="btn" href="#events">Explore Events</a>
+  </section>
+
+  <section id="events" aria-labelledby="events-heading">
+    <h2 id="events-heading">What's Next?</h2>
+
+    <div class="card-grid">
+
+      <article class="card">
+        <div class="card-thumb" role="img" aria-label="AI Hack Night event banner"></div>
+        <p>BML Tech Club</p>
+        <h3>AI Hack Night</h3>
+        <p>28 Aug &middot; 6:00 PM &middot; Innovation Lab</p>
+        <a href="#register">Register &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" role="img" aria-label="Robotics Townhall event banner"></div>
+        <p>Robotics Society</p>
+        <h3>Robotics Townhall</h3>
+        <p>9 Sept &middot; 5:00 PM &middot; Main Auditorium</p>
+        <a href="#register">Register &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" role="img" aria-label="Culinary Club Town Hall event banner"></div>
+        <p>Culinary Club</p>
+        <h3>Town Hall &mdash; Culinary Club</h3>
+        <p>9 Sept &middot; 4:00 PM &middot; Campus Plaza</p>
+        <a href="#register">Register &rarr;</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="clubs" aria-labelledby="clubs-heading">
+    <h2 id="clubs-heading">Find Your People</h2>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>ACM Student Chapter</h3>
+        <p>Competitive programming, tech talks, and hackathons.</p>
+        <p>Technology &middot; 18 events</p>
+      </div>
+
+      <div class="card">
+        <h3>PFA &mdash; The Performing Arts Club</h3>
+        <p>Dance, theatre, and music across the year.</p>
+        <p>Cultural &middot; 12 events</p>
+      </div>
+
+      <div class="card">
+        <h3>YRC &mdash; Youth Red Cross</h3>
+        <p>Blood donation drives, health camps, and volunteering.</p>
+        <p>Community &middot; 9 events</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 PULSE &middot; BML Munjal University</p>
+</footer>
+
+</body>
+</html>
