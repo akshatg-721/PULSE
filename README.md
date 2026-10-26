@@ -6,6 +6,14 @@ PULSE is a modern campus event discovery and engagement platform designed to bri
 
 Instead of functioning like a traditional college event directory, PULSE combines event discovery, short-form video, online registration, attendance, and club management into one interactive platform.
 
+## Run the sign-up demo
+
+1. Open a terminal in the `PULSE` folder.
+2. Run `node server.js`.
+3. Open `http://127.0.0.1:3000`.
+
+Accounts are saved to `data/users.json`. Passwords are saved as hashes, not readable text. Open the site through the local server, not by opening the HTML file directly.
+
 ✨ What is PULSE?
 
 PULSE is built around a simple idea:

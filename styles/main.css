@@ -78,3 +78,29 @@ footer {
   text-align: center;
   color: #8b8f98;
 }
+
+.sign-up {
+  max-width: 420px;
+  margin: 40px auto;
+}
+
+.sign-up label,
+.sign-up input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sign-up input {
+  margin: 8px 0 20px;
+  padding: 12px;
+  color: #f2f3f6;
+  background: #131826;
+  border: 1px solid #262d40;
+  border-radius: 6px;
+}
+
+.sign-up button {
+  border: 0;
+  cursor: pointer;
+}
