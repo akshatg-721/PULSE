@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register for an event - PULSE</title>
+  <link rel="stylesheet" href="../styles/register.css">
+</head>
+<body>
+  <header class="register-header">
+    <a href="/"><strong>PULSE</strong></a>
+    <a href="/">Back to home</a>
+  </header>
+
+  <main class="register-main">
+    <section class="register-card" aria-labelledby="register-title">
+      <p class="eyebrow">Campus events</p>
+      <h1 id="register-title">Register for an event</h1>
+      <p class="register-intro">Enter your details to save your place.</p>
+
+      <form id="register-form">
+        <label for="username">Your name</label>
+        <input id="username" name="username" type="text" autocomplete="name" required>
+
+        <label for="eventName">Event</label>
+        <select id="eventName" name="eventName" required>
+          <option value="" selected disabled>Choose an event</option>
+          <option value="AI Hack Night">AI Hack Night</option>
+          <option value="Robotics Townhall">Robotics Townhall</option>
+          <option value="Town Hall — Culinary Club">Town Hall — Culinary Club</option>
+        </select>
+
+        <label for="enrollment">Enrollment number</label>
+        <input id="enrollment" name="enrollment" type="text" autocomplete="off" required>
+
+        <button type="submit">Complete registration</button>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="/index/register.js"></script>
+</body>
+</html>

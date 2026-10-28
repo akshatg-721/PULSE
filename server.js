@@ -5,6 +5,13 @@ const crypto = require("crypto");
 
 const root = __dirname;
 const dataFile = path.join(root, "data", "users.json");
+const registrationsFile = path.join(root, "data", "registerations.json");
+const port = Number(process.env.PORT) || 3000;
+const events = [
+  "AI Hack Night",
+  "Robotics Townhall",
+  "Town Hall — Culinary Club"
+];
 
 function hashPassword(password, salt) {
   return crypto.scryptSync(password, salt, 64).toString("hex");
@@ -22,15 +29,53 @@ const pages = {
   "/index/reels.html": ["index/reels.html", "text/html"],
   "/index/reels.js": ["index/reels.js", "text/javascript"],
   "/index/clubs.html": ["index/clubs.html", "text/html"],
+  "/index/register.html": ["index/register.html", "text/html"],
+  "/index/register.js": ["index/register.js", "text/javascript"],
   "/index/signup.html": ["index/signup.html", "text/html"],
   "/index/signin.html": ["index/signin.html", "text/html"],
   "/index/signup.js": ["index/signup.js", "text/javascript"],
   "/index/signin.js": ["index/signin.js", "text/javascript"],
   "/styles/main.css": ["styles/main.css", "text/css"],
-  "/styles/reels.css": ["styles/reels.css", "text/css"]
+  "/styles/reels.css": ["styles/reels.css", "text/css"],
+  "/styles/register.css": ["styles/register.css", "text/css"]
 };
 
 http.createServer((request, response) => {
+  if (request.method === "POST" && request.url === "/register") {
+    let body = "";
+    request.on("data", (chunk) => body += chunk);
+    request.on("end", () => {
+      const form = new URLSearchParams(body);
+      const username = form.get("username")?.trim();
+      const eventName = form.get("eventName");
+      const enrollment = form.get("enrollment")?.trim();
+
+      if (!username || !enrollment || !events.includes(eventName)) {
+        response.writeHead(400, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Enter your name, enrollment number, and choose a listed event." }));
+        return;
+      }
+
+      try {
+        fs.mkdirSync(path.dirname(registrationsFile), { recursive: true });
+        const file = fs.existsSync(registrationsFile)
+          ? fs.readFileSync(registrationsFile, "utf8").trim()
+          : "";
+        const registrations = file ? JSON.parse(file) : [];
+        registrations.push({ username, eventName, enrollment });
+        fs.writeFileSync(registrationsFile, JSON.stringify(registrations, null, 2));
+
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Registration successful." }));
+      } catch (error) {
+        console.error("Could not save registration:", error);
+        response.writeHead(500, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Could not save your registration. Please try again." }));
+      }
+    });
+    return;
+  }
+
   if (request.method === "POST" && request.url === "/signin") {
     let body = "";
     request.on("data", (chunk) => body += chunk);
@@ -123,6 +168,6 @@ http.createServer((request, response) => {
     response.writeHead(200, { "Content-Type": page[1] });
     response.end(content);
   });
-}).listen(3000, "127.0.0.1", () => {
-  console.log("PULSE is running at http://127.0.0.1:3000");
+}).listen(port, "127.0.0.1", () => {
+  console.log(`PULSE is running at http://127.0.0.1:${port}`);
 });
