@@ -19,12 +19,15 @@ function readUsers() {
 const pages = {
   "/": ["index/main.html", "text/html"],
   "/index/main.html": ["index/main.html", "text/html"],
+  "/index/reels.html": ["index/reels.html", "text/html"],
+  "/index/reels.js": ["index/reels.js", "text/javascript"],
   "/index/clubs.html": ["index/clubs.html", "text/html"],
   "/index/signup.html": ["index/signup.html", "text/html"],
   "/index/signin.html": ["index/signin.html", "text/html"],
   "/index/signup.js": ["index/signup.js", "text/javascript"],
   "/index/signin.js": ["index/signin.js", "text/javascript"],
-  "/styles/main.css": ["styles/main.css", "text/css"]
+  "/styles/main.css": ["styles/main.css", "text/css"],
+  "/styles/reels.css": ["styles/reels.css", "text/css"]
 };
 
 http.createServer((request, response) => {
