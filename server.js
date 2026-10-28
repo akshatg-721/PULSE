@@ -6,6 +6,16 @@ const crypto = require("crypto");
 const root = __dirname;
 const dataFile = path.join(root, "data", "users.json");
 
+function hashPassword(password, salt) {
+  return crypto.scryptSync(password, salt, 64).toString("hex");
+}
+
+function readUsers() {
+  if (!fs.existsSync(dataFile)) return [];
+  const file = fs.readFileSync(dataFile, "utf8").trim();
+  return file ? JSON.parse(file) : [];
+}
+
 const pages = {
   "/": ["index/main.html", "text/html"],
   "/index/main.html": ["index/main.html", "text/html"],
@@ -32,20 +42,21 @@ http.createServer((request, response) => {
       }
 
       try {
-        const users = JSON.parse(fs.readFileSync(dataFile, "utf8"));
-        const userExists = Array.isArray(users) && users.some((user) => {
-          if (!user || user.email !== email || typeof user.salt !== "string" || typeof user.password !== "string") {
-            return false;
-          }
+        const users = readUsers();
+        const user = users.find((item) => item.email === email);
+        const savedHash = user && typeof user.salt === "string" && /^[a-f0-9]{128}$/i.test(user.password)
+          ? Buffer.from(user.password, "hex")
+          : Buffer.alloc(0);
+        const enteredHash = user && savedHash.length
+          ? crypto.scryptSync(password, user.salt, 64)
+          : Buffer.alloc(0);
+        const passwordMatches = savedHash.length === enteredHash.length
+          && savedHash.length > 0
+          && crypto.timingSafeEqual(savedHash, enteredHash);
 
-          const savedHash = Buffer.from(user.password, "hex");
-          const enteredHash = crypto.scryptSync(password, user.salt, 64);
-          return savedHash.length === enteredHash.length && crypto.timingSafeEqual(savedHash, enteredHash);
-        });
-
-        if (!userExists) {
-          response.writeHead(404, { "Content-Type": "application/json" });
-          response.end(JSON.stringify({ message: "User not found." }));
+        if (!passwordMatches) {
+          response.writeHead(401, { "Content-Type": "application/json" });
+          response.end(JSON.stringify({ message: "Email or password is incorrect." }));
           return;
         }
 
@@ -74,9 +85,7 @@ http.createServer((request, response) => {
       }
 
       fs.mkdirSync(path.dirname(dataFile), { recursive: true });
-      const users = fs.existsSync(dataFile)
-        ? JSON.parse(fs.readFileSync(dataFile, "utf8"))
-        : [];
+      const users = readUsers();
       if (users.some((user) => user.email === email)) {
         response.writeHead(409, { "Content-Type": "application/json" });
         response.end(JSON.stringify({ message: "An account with this email already exists." }));
@@ -84,7 +93,7 @@ http.createServer((request, response) => {
       }
 
       const salt = crypto.randomBytes(16).toString("hex");
-      const passwordHash = crypto.scryptSync(password, salt, 64).toString("hex");
+      const passwordHash = hashPassword(password, salt);
       users.push({ email, salt, password: passwordHash, createdAt: new Date().toISOString() });
       fs.writeFileSync(dataFile, JSON.stringify(users, null, 2));
 
