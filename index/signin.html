@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in - PULSE</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <header>
+    <a href="main.html"><strong>PULSE</strong></a>
+    <a href="main.html">Back to home</a>
+  </header>
+
+  <main>
+    <section class="sign-up">
+      <h1>Sign in</h1>
+      <p>Sign in with your email address and password.</p>
+
+      <form id="sign-in-form">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+
+        <button class="btn" type="submit">Sign in</button>
+        <p id="form-message" role="status"></p>
+      </form>
+
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </section>
+  </main>
+
+  <script src="signin.js"></script>
+</body>
+</html>
