@@ -52,6 +52,7 @@ h2 {
   color: #ffffff;
   padding: 10px 20px;
   margin-top: 16px;
+  border-radius: 4px;
 }
 
 .card-grid {
