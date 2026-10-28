@@ -19,6 +19,7 @@ function readUsers() {
 const pages = {
   "/": ["index/main.html", "text/html"],
   "/index/main.html": ["index/main.html", "text/html"],
+  "/index/clubs.html": ["index/clubs.html", "text/html"],
   "/index/signup.html": ["index/signup.html", "text/html"],
   "/index/signin.html": ["index/signin.html", "text/html"],
   "/index/signup.js": ["index/signup.js", "text/javascript"],
