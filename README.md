@@ -14,6 +14,8 @@ Instead of functioning like a traditional college event directory, PULSE combine
 
 Accounts are saved to `data/users.json`. Passwords are saved as salted hashes, not readable text. Sign in from the home page using an account you created. Open the site through the local server, not by opening the HTML file directly.
 
+Open the reels page at `http://127.0.0.1:3000/index/reels.html`.
+
 ✨ What is PULSE?
 
 PULSE is built around a simple idea:
