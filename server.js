@@ -29,6 +29,8 @@ const pages = {
   "/index/reels.html": ["index/reels.html", "text/html"],
   "/index/reels.js": ["index/reels.js", "text/javascript"],
   "/index/clubs.html": ["index/clubs.html", "text/html"],
+  "/index/about.html": ["index/about.html", "text/html"],
+  "/index/team.html": ["index/team.html", "text/html"],
   "/index/register.html": ["index/register.html", "text/html"],
   "/index/register.js": ["index/register.js", "text/javascript"],
   "/index/signup.html": ["index/signup.html", "text/html"],
