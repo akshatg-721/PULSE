@@ -37,6 +37,8 @@ const pages = {
   "/index/signin.html": ["index/signin.html", "text/html"],
   "/index/signup.js": ["index/signup.js", "text/javascript"],
   "/index/signin.js": ["index/signin.js", "text/javascript"],
+  "/index/nav.js": ["index/nav.js", "text/javascript"],
+  "/index/nav.css": ["index/nav.css", "text/css"],
   "/styles/main.css": ["styles/main.css", "text/css"],
   "/styles/reels.css": ["styles/reels.css", "text/css"],
   "/styles/register.css": ["styles/register.css", "text/css"]

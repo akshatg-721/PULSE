@@ -1,0 +1,241 @@
+/* ============================================================
+   nav.css — Shared navbar and footer styles for PULSE
+   Colour palette pulled from main.css:
+     background  #0a0e16
+     surface     #131826
+     border      #262d40
+     text        #f2f3f6
+     muted       #b7bdcb
+     accent      #3b82f6
+     accent-2    #667eea
+   ============================================================ */
+
+/* ---------- Layout shell ---------- */
+#site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 22, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #262d40;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 60px;
+  gap: 24px;
+}
+
+/* ---------- Logo ---------- */
+.nav-logo {
+  color: #f2f3f6;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.nav-logo:hover {
+  color: #667eea;
+}
+
+/* ---------- Nav menu (desktop) ---------- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-menu ul li a {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #b7bdcb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.nav-menu ul li a:hover {
+  color: #f2f3f6;
+  background: #1a2134;
+}
+
+.nav-menu ul li a.nav-active {
+  color: #f2f3f6;
+  background: #1e2840;
+}
+
+/* ---------- Auth buttons ---------- */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.nav-auth a {
+  color: #b7bdcb;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.nav-auth a:hover {
+  color: #f2f3f6;
+  background: #1a2134;
+}
+
+.nav-auth a.nav-active {
+  color: #f2f3f6;
+}
+
+/* "Sign up" is styled as a pill button */
+.nav-btn {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+}
+
+.nav-btn:hover {
+  background: #2563eb !important;
+}
+
+/* ---------- Hamburger button (hidden on desktop) ---------- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: #b7bdcb;
+  transition: transform 220ms ease, opacity 220ms ease, background 140ms ease;
+}
+
+.nav-hamburger:hover span {
+  background: #f2f3f6;
+}
+
+/* Animate hamburger → X when menu is open */
+#site-nav:has(.nav-open) .nav-hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#site-nav:has(.nav-open) .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+#site-nav:has(.nav-open) .nav-hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Footer ---------- */
+#site-footer {
+  padding: 24px 40px;
+  text-align: center;
+  color: #8b8f98;
+  border-top: 1px solid #262d40;
+  font-size: 14px;
+}
+
+/* ---------- Mobile (<= 700px) ---------- */
+@media (max-width: 700px) {
+  .nav-inner {
+    padding: 0 20px;
+    height: 56px;
+    flex-wrap: wrap;
+    /* keep logo left, hamburger right, menu below */
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  /* Slide-down mobile menu */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    /* position below the nav bar */
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: #0d1120;
+    border-bottom: 1px solid #262d40;
+    padding: 12px 0 16px;
+    z-index: 99;
+  }
+
+  .nav-menu.nav-open {
+    display: flex;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .nav-menu ul li {
+    width: 100%;
+  }
+
+  .nav-menu ul li a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .nav-auth {
+    width: 100%;
+    padding: 8px 24px 4px;
+    gap: 8px;
+  }
+
+  .nav-auth a {
+    font-size: 15px;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  #site-footer {
+    padding: 20px 20px;
+  }
+}
