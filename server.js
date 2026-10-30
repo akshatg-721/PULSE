@@ -39,9 +39,12 @@ const pages = {
   "/index/signin.js": ["index/signin.js", "text/javascript"],
   "/index/nav.js": ["index/nav.js", "text/javascript"],
   "/index/nav.css": ["index/nav.css", "text/css"],
+  "/index/events.html": ["index/events.html", "text/html"],
+  "/index/events.js": ["index/events.js", "text/javascript"],
   "/styles/main.css": ["styles/main.css", "text/css"],
   "/styles/reels.css": ["styles/reels.css", "text/css"],
-  "/styles/register.css": ["styles/register.css", "text/css"]
+  "/styles/register.css": ["styles/register.css", "text/css"],
+  "/styles/events.css": ["styles/events.css", "text/css"]
 };
 
 http.createServer((request, response) => {
@@ -153,6 +156,25 @@ http.createServer((request, response) => {
       response.writeHead(200, { "Content-Type": "application/json" });
       response.end(JSON.stringify({ message: "Account created. You can sign in here later." }));
     });
+    return;
+  }
+
+  // GET /api/events — reads data/events.json and returns the array as JSON.
+  // Returns an empty array if the file is missing or contains invalid JSON.
+  if (request.method === "GET" && request.url === "/api/events") {
+    const eventsFile = path.join(root, "data", "events.json");
+    try {
+      const raw = fs.existsSync(eventsFile)
+        ? fs.readFileSync(eventsFile, "utf8").trim()
+        : "";
+      const data = raw ? JSON.parse(raw) : [];
+      response.writeHead(200, { "Content-Type": "application/json" });
+      response.end(JSON.stringify(Array.isArray(data) ? data : []));
+    } catch (error) {
+      console.error("Could not read events data:", error);
+      response.writeHead(200, { "Content-Type": "application/json" });
+      response.end(JSON.stringify([]));
+    }
     return;
   }
 

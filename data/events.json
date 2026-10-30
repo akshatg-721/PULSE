@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "slug": "ai-hack-night",
+    "title": "AI Hack Night",
+    "category": "Tech",
+    "date": "2026-08-28",
+    "time": "6:00 PM",
+    "venue": "Innovation Lab",
+    "club": "BML Tech Club",
+    "capacity": 80,
+    "description": "An overnight hackathon where teams compete to build AI-powered solutions to real campus problems. Open to all skill levels."
+  },
+  {
+    "id": 2,
+    "slug": "robotics-townhall",
+    "title": "Robotics Townhall",
+    "category": "Tech",
+    "date": "2026-09-09",
+    "time": "5:00 PM",
+    "venue": "Main Auditorium",
+    "club": "Robotics Society",
+    "capacity": 150,
+    "description": "An open forum to showcase ongoing robotics projects, discuss upcoming competitions, and welcome new members to the society."
+  },
+  {
+    "id": 3,
+    "slug": "culinary-town-hall",
+    "title": "Town Hall — Culinary Club",
+    "category": "Cultural",
+    "date": "2026-09-09",
+    "time": "4:00 PM",
+    "venue": "Campus Plaza",
+    "club": "Culinary Club",
+    "capacity": 120,
+    "description": "A lively gathering where members share recipes, plan the semester's food festivals, and taste dishes from across the country."
+  },
+  {
+    "id": 4,
+    "slug": "open-source-sprint",
+    "title": "Open Source Sprint",
+    "category": "Tech",
+    "date": "2026-09-20",
+    "time": "10:00 AM",
+    "venue": "CS Lab 3",
+    "club": "ACM Student Chapter",
+    "capacity": 60,
+    "description": "A one-day coding sprint where participants contribute pull requests to selected open-source projects under mentor guidance."
+  },
+  {
+    "id": 5,
+    "slug": "battle-of-bands",
+    "title": "Battle of Bands",
+    "category": "Cultural",
+    "date": "2026-09-27",
+    "time": "7:00 PM",
+    "venue": "Open Air Theatre",
+    "club": "PFA — The Performing Arts Club",
+    "capacity": 500,
+    "description": "Student bands face off in a night of live music spanning rock, jazz, classical fusion, and everything in between."
+  },
+  {
+    "id": 6,
+    "slug": "inter-college-football",
+    "title": "Inter-College Football Tournament",
+    "category": "Sports",
+    "date": "2026-10-04",
+    "time": "9:00 AM",
+    "venue": "Sports Ground A",
+    "club": "BLAZE Sports Club",
+    "capacity": 200,
+    "description": "A two-day football knockout tournament hosted by BML Munjal University, open to teams from colleges across the NCR."
+  },
+  {
+    "id": 7,
+    "slug": "chess-championship",
+    "title": "Annual Chess Championship",
+    "category": "Sports",
+    "date": "2026-10-11",
+    "time": "10:00 AM",
+    "venue": "Student Activity Centre",
+    "club": "SMC",
+    "capacity": 64,
+    "description": "A Swiss-system chess tournament open to all students. Trophies and certificates for the top three finishers."
+  },
+  {
+    "id": 8,
+    "slug": "ui-design-bootcamp",
+    "title": "UI/UX Design Bootcamp",
+    "category": "Workshop",
+    "date": "2026-10-18",
+    "time": "11:00 AM",
+    "venue": "Design Studio",
+    "club": "INSIGHTS",
+    "capacity": 40,
+    "description": "A hands-on full-day workshop covering Figma fundamentals, design systems, and prototyping—from wireframe to pixel-perfect mockup."
+  },
+  {
+    "id": 9,
+    "slug": "public-speaking-workshop",
+    "title": "Public Speaking Workshop",
+    "category": "Workshop",
+    "date": "2026-10-25",
+    "time": "2:00 PM",
+    "venue": "Seminar Hall 2",
+    "club": "SATA",
+    "capacity": 50,
+    "description": "An interactive workshop on voice modulation, storytelling, and confident delivery, led by an industry communication coach."
+  }
+]
