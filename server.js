@@ -279,7 +279,8 @@ http.createServer((request, response) => {
     return;
   }
 
-  const page = pages[request.url];
+  const pathname = new URL(request.url, "http://localhost").pathname;
+  const page = pages[pathname];
   if (!page || request.method !== "GET") {
     response.writeHead(404);
     response.end("Not found");
