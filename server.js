@@ -5,13 +5,8 @@ const crypto = require("crypto");
 
 const root = __dirname;
 const dataFile = path.join(root, "data", "users.json");
-const registrationsFile = path.join(root, "data", "registerations.json");
-const port =  3000;
-const events = [
-  "AI Hack Night",
-  "Robotics Townhall",
-  "Town Hall — Culinary Club"
-];
+const registrationsFile = path.join(root, "data", "registrations.json");
+const port = Number(process.env.PORT) || 3000;
 
 function hashPassword(password, salt) {
   return crypto.scryptSync(password, salt, 64).toString("hex");
@@ -52,32 +47,138 @@ http.createServer((request, response) => {
     let body = "";
     request.on("data", (chunk) => body += chunk);
     request.on("end", () => {
-      const form = new URLSearchParams(body);
-      const username = form.get("username")?.trim();
-      const eventName = form.get("eventName");
-      const enrollment = form.get("enrollment")?.trim();
+      // --- Parse all fields from the submitted form body ---
+      const form       = new URLSearchParams(body);
+      const name       = form.get("name")?.trim()       ?? "";
+      const email      = form.get("email")?.trim().toLowerCase() ?? "";
+      const phone      = form.get("phone")?.trim()      ?? "";
+      const course     = form.get("course")?.trim()     ?? "";
+      const year       = form.get("year")?.trim()       ?? "";
+      const enrollment = form.get("enrollment")?.trim() ?? "";
+      const eventName  = form.get("eventName")?.trim()  ?? "";
+      const agree      = form.get("agree")?.trim()      ?? "";
 
-      if (!username || !enrollment || !events.includes(eventName)) {
+      // --- Validate each field in order; return the first failure ---
+      const bad = (message, field) => {
         response.writeHead(400, { "Content-Type": "application/json" });
-        response.end(JSON.stringify({ message: "Enter your name, enrollment number, and choose a listed event." }));
-        return;
+        response.end(JSON.stringify({ message, field }));
+      };
+
+      if (name.length < 2)
+        return bad("Name must be at least 2 characters.", "name");
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        return bad("Enter a valid email address.", "email");
+
+      if (!/^\d{10}$/.test(phone))
+        return bad("Phone must be exactly 10 digits.", "phone");
+
+      if (!course)
+        return bad("Course is required.", "course");
+
+      if (!["1", "2", "3", "4"].includes(year))
+        return bad("Year must be 1, 2, 3, or 4.", "year");
+
+      if (!enrollment)
+        return bad("Enrollment number is required.", "enrollment");
+
+      if (agree !== "on" && agree !== "true")
+        return bad("You must agree to the terms.", "agree");
+
+      // --- Load events.json to validate the chosen event name ---
+      const eventsFilePath = path.join(root, "data", "events.json");
+      let validEventTitles = [];
+      try {
+        const raw = fs.existsSync(eventsFilePath)
+          ? fs.readFileSync(eventsFilePath, "utf8").trim()
+          : "";
+        const parsed = raw ? JSON.parse(raw) : [];
+        validEventTitles = Array.isArray(parsed)
+          ? parsed.map((e) => e.title)
+          : [];
+      } catch (_) {
+        // If events.json is unreadable, fall through with an empty list
+        // so the eventName check below returns a clear 400.
       }
 
+      if (!validEventTitles.includes(eventName))
+        return bad("Choose a valid event from the list.", "eventName");
+
+      // --- Read existing registrations (empty array if file is missing/corrupt) ---
       try {
         fs.mkdirSync(path.dirname(registrationsFile), { recursive: true });
-        const file = fs.existsSync(registrationsFile)
-          ? fs.readFileSync(registrationsFile, "utf8").trim()
-          : "";
-        const registrations = file ? JSON.parse(file) : [];
-        registrations.push({ username, eventName, enrollment });
-        fs.writeFileSync(registrationsFile, JSON.stringify(registrations, null, 2));
 
+        let registrations = [];
+        try {
+          const raw = fs.existsSync(registrationsFile)
+            ? fs.readFileSync(registrationsFile, "utf8").trim()
+            : "";
+          registrations = raw ? JSON.parse(raw) : [];
+          if (!Array.isArray(registrations)) registrations = [];
+        } catch (_) {
+          // Corrupt file — start fresh rather than blocking all registrations.
+          registrations = [];
+        }
+
+        // --- Reject duplicate: same email + same eventName (case-insensitive) ---
+        const duplicate = registrations.some(
+          (r) =>
+            r.email?.toLowerCase() === email &&
+            r.eventName?.toLowerCase() === eventName.toLowerCase()
+        );
+        if (duplicate) {
+          response.writeHead(409, { "Content-Type": "application/json" });
+          response.end(
+            JSON.stringify({
+              message: `You are already registered for "${eventName}".`
+            })
+          );
+          return;
+        }
+
+        // --- Generate a unique PULSE-XXXXX ID ---
+        const existingIds = new Set(registrations.map((r) => r.id));
+        let id;
+        do {
+          id = "PULSE-" + String(Math.floor(10000 + Math.random() * 90000));
+        } while (existingIds.has(id));
+
+        // --- Append the new record and persist ---
+        const record = {
+          id,
+          name,
+          email,
+          phone,
+          course,
+          year,
+          enrollment,
+          eventName,
+          createdAt: new Date().toISOString()
+        };
+        registrations.push(record);
+        fs.writeFileSync(
+          registrationsFile,
+          JSON.stringify(registrations, null, 2)
+        );
+
+        // --- Return success with the new ID ---
         response.writeHead(200, { "Content-Type": "application/json" });
-        response.end(JSON.stringify({ message: "Registration successful." }));
+        response.end(
+          JSON.stringify({
+            message: "Registration successful.",
+            id,
+            eventName,
+            name
+          })
+        );
       } catch (error) {
         console.error("Could not save registration:", error);
         response.writeHead(500, { "Content-Type": "application/json" });
-        response.end(JSON.stringify({ message: "Could not save your registration. Please try again." }));
+        response.end(
+          JSON.stringify({
+            message: "Could not save your registration. Please try again."
+          })
+        );
       }
     });
     return;
