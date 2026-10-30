@@ -15,24 +15,56 @@
       <h1 id="register-title">Register for an event</h1>
       <p class="register-intro">Enter your details to save your place.</p>
 
-      <form id="register-form">
-        <label for="username">Your name</label>
-        <input id="username" name="username" type="text" autocomplete="name" required>
+      <form id="register-form" novalidate>
 
-        <label for="eventName">Event</label>
-        <select id="eventName" name="eventName" required>
-          <option value="" selected disabled>Choose an event</option>
-          <option value="AI Hack Night">AI Hack Night</option>
-          <option value="Robotics Townhall">Robotics Townhall</option>
-          <option value="Town Hall — Culinary Club">Town Hall — Culinary Club</option>
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" autocomplete="name">
+        <span class="error" id="err-name"></span>
+
+        <label for="email">College email</label>
+        <input id="email" name="email" type="email" autocomplete="email">
+        <span class="error" id="err-email"></span>
+
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="10">
+        <span class="error" id="err-phone"></span>
+
+        <label for="course">Course</label>
+        <input id="course" name="course" type="text" autocomplete="off">
+        <span class="error" id="err-course"></span>
+
+        <label for="year">Year</label>
+        <select id="year" name="year">
+          <option value="" selected disabled>Select your year</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
         </select>
+        <span class="error" id="err-year"></span>
 
         <label for="enrollment">Enrollment number</label>
-        <input id="enrollment" name="enrollment" type="text" autocomplete="off" required>
+        <input id="enrollment" name="enrollment" type="text" autocomplete="off">
+        <span class="error" id="err-enrollment"></span>
 
-        <button type="submit">Complete registration</button>
-        <p id="form-message" role="status" aria-live="polite"></p>
+        <label for="eventName">Event</label>
+        <select id="eventName" name="eventName">
+          <option value="" selected disabled>Choose an event</option>
+        </select>
+        <span class="error" id="err-eventName"></span>
+
+        <div class="agree-row">
+          <input id="agree" name="agree" type="checkbox">
+          <label for="agree" class="agree-label">I agree to the event rules</label>
+        </div>
+        <span class="error" id="err-agree"></span>
+
+        <button id="submit-btn" type="submit">Complete registration</button>
+
       </form>
+
+      <div id="confirmation" hidden></div>
+
     </section>
   </main>
 
