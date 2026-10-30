@@ -102,7 +102,7 @@
       })
       .then(function (data) {
         allEvents = Array.isArray(data) ? data : [];
-        renderEvents(allEvents);
+        applyFilters();
       })
       .catch(function (err) {
         console.error("Could not load events:", err);
@@ -112,41 +112,89 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* TODO — Filtering, searching and sorting
-   * ================================================================
-   * The functions below are intentionally left empty so the developer
-   * can implement them independently.
-   *
-   * Suggested approach:
-   *
-   *   function getFilteredList() {
-   *     var query    = document.getElementById("search").value.toLowerCase();
-   *     var category = activeCategory;          // track with a variable
-   *     var sort     = document.getElementById("sort").value;
-   *
-   *     var result = allEvents.filter(function (e) {
-   *       var matchesCategory = category === "All" || e.category === category;
-   *       var matchesSearch   = e.title.toLowerCase().includes(query)
-   *                          || e.club.toLowerCase().includes(query)
-   *                          || e.venue.toLowerCase().includes(query);
-   *       return matchesCategory && matchesSearch;
-   *     });
-   *
-   *     if (sort === "name") {
-   *       result.sort(function (a, b) { return a.title.localeCompare(b.title); });
-   *     } else {
-   *       result.sort(function (a, b) { return a.date.localeCompare(b.date); });
-   *     }
-   *
-   *     return result;
-   *   }
-   *
-   *   Wire up listeners on #search (input event), .filter-btn (click),
-   *   and #sort (change), each calling:
-   *     renderEvents(getFilteredList());
-   * ================================================================
-   * END TODO
+  /* State variables
+   * These three variables remember the user's current choices so that
+   * applyFilters() can always re-derive the correct list from scratch.
    * ------------------------------------------------------------------ */
+  var currentCategory = "All";
+  var searchText      = "";
+  var sortBy          = "date";
+
+  /* ------------------------------------------------------------------ */
+  /* applyFilters
+   * The single source of truth for what appears in the grid.
+   * Always starts from the full allEvents array, filters by category,
+   * then by search text (title + club + venue), then sorts, then renders.
+   * ------------------------------------------------------------------ */
+  function applyFilters() {
+    // Step 1 — category filter.
+    var result = allEvents.filter(function (e) {
+      return currentCategory === "All" || e.category === currentCategory;
+    });
+
+    // Step 2 — text search across title, club and venue.
+    result = result.filter(function (e) {
+      var haystack = (e.title + " " + e.club + " " + e.venue).toLowerCase();
+      return haystack.indexOf(searchText) !== -1;
+    });
+
+    // Step 3 — sort.
+    if (sortBy === "name") {
+      result.sort(function (a, b) { return a.title.localeCompare(b.title); });
+    } else {
+      result.sort(function (a, b) { return a.date.localeCompare(b.date); });
+    }
+
+    // Step 4 — hand the derived list to renderEvents (it handles #empty).
+    renderEvents(result);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Category pill listener
+   * Attached to every .filter-btn button. When clicked, it updates
+   * currentCategory to the button's data-category value, moves the
+   * "active" CSS class to the clicked button, then re-runs applyFilters.
+   * ------------------------------------------------------------------ */
+  var filterBtns = document.querySelectorAll(".filter-btn");
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      // Remove "active" from whichever pill currently has it.
+      filterBtns.forEach(function (b) { b.classList.remove("active"); });
+      // Mark this pill as active.
+      btn.classList.add("active");
+      // Remember the chosen category and refresh the grid.
+      currentCategory = btn.dataset.category;
+      applyFilters();
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Search input listener
+   * Fires on every keystroke inside #search. Trims whitespace, lowercases
+   * the value (so matching is case-insensitive), stores it in searchText,
+   * then re-runs applyFilters so the grid updates live.
+   * ------------------------------------------------------------------ */
+  var searchInput = document.getElementById("search");
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      searchText = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Sort select listener
+   * Fires whenever the user picks a different option in #sort.
+   * Updates sortBy then re-runs applyFilters so the order changes
+   * without losing the current category filter or search text.
+   * ------------------------------------------------------------------ */
+  var sortSelect = document.getElementById("sort");
+  if (sortSelect) {
+    sortSelect.addEventListener("change", function () {
+      sortBy = sortSelect.value;
+      applyFilters();
+    });
+  }
 
   // Kick everything off once the DOM is ready.
   if (document.readyState === "loading") {
