@@ -11,19 +11,6 @@ a {
   text-decoration: none;
 }
 
-.auth-links{
-  display: flex;
-  gap: 16px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid #262d40;
-}
-
 nav ul {
   list-style: none;
   display: flex;
@@ -79,12 +66,6 @@ h2 {
   margin-bottom: 12px;
 }
 
-footer {
-  padding: 20px 40px;
-  text-align: center;
-  color: #8b8f98;
-}
-
 .sign-up {
   max-width: 420px;
   margin: 40px auto;
@@ -113,10 +94,6 @@ footer {
 
 .clubs-page {
   min-height: 100vh;
-}
-
-.clubs-header {
-  padding: 20px 40px;
 }
 
 .clubs-section {
@@ -166,10 +143,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .clubs-header {
-    padding: 16px 20px;
-  }
-
   .clubs-section {
     padding: 40px 20px;
   }

@@ -11,14 +11,6 @@ a {
   text-decoration: none;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid #262d40;
-}
-
 .register-card {
   max-width: 420px;
   margin: 40px auto;
@@ -53,10 +45,6 @@ header {
 }
 
 @media (max-width: 520px) {
-  header {
-    padding: 16px 20px;
-  }
-
   .register-card {
     padding: 0 20px;
   }
