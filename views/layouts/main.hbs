@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='%23f5c400'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+  {{#if intro}}
+  {{!-- Decides BEFORE first paint whether to play the intro: once per browser
+        tab session, never for reduced-motion users. Add ?intro to the URL to replay it. --}}
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var seen = sessionStorage.getItem("pulseIntroSeen");
+        var forced = /[?&]intro\b/.test(location.search);
+        if (reduce || (seen && !forced)) return;
+        sessionStorage.setItem("pulseIntroSeen", "1");
+        root.classList.add("intro-playing");
+        // Failsafe: never leave the page locked if something goes wrong.
+        setTimeout(function () { root.classList.remove("intro-playing", "intro-revealing"); }, 5000);
+      } catch (e) {}
+    })();
+  </script>
+  {{/if}}
+</head>
+<body class="flex min-h-screen flex-col bg-pulse-bg font-sans text-pulse-text antialiased">
+  <div class="film-grain" aria-hidden="true"></div>
+
+  {{#if intro}}{{> intro}}{{/if}}
+
+
+
+  {{> header}}
+
+  <main class="flex-1">
+    {{{body}}}
+  </main>
+
+  {{> footer}}
+
+  <script src="/index/ui.js" defer></script>
+  {{#each scripts}}
+  <script src="{{this}}" defer></script>
+  {{/each}}
+</body>
+</html>

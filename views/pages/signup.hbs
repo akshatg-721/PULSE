@@ -1,0 +1,19 @@
+<section class="mx-auto max-w-md px-5 py-14 sm:py-20">
+  <div class="animate-fade-up rounded-2xl border border-pulse-border bg-pulse-surface/80 p-8 shadow-2xl shadow-black/30 backdrop-blur">
+    <h1 class="text-3xl font-extrabold">Sign up</h1>
+    <p class="mt-2 text-pulse-muted">Create an account with your email address.</p>
+
+    <form id="sign-up-form" class="mt-8">
+      <label class="form-label" for="email">Email</label>
+      <input class="field" id="email" name="email" type="email" required>
+
+      <label class="form-label" for="password">Password</label>
+      <input class="field" id="password" name="password" type="password" required minlength="6">
+
+      <button class="btn-primary w-full" type="submit">Create account</button>
+      <p id="form-message" class="mt-4 min-h-6 text-center text-sm text-pulse-muted" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="mt-4 text-center text-sm text-pulse-muted">Already have an account? <a class="font-semibold text-pulse-accent hover:underline" href="/index/signin.html">Sign in</a></p>
+  </div>
+</section>

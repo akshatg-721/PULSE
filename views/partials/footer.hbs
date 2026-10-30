@@ -1,0 +1,11 @@
+<footer id="site-footer" class="mt-20 border-t border-white/10 bg-pulse-bg">
+  <div class="h-px bg-gradient-to-r from-transparent via-pulse-accent to-transparent"></div>
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-pulse-muted sm:flex-row sm:px-10">
+    <p>&copy; {{year}} {{siteName}} &middot; {{university}}</p>
+    <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+      {{#each navLinks}}
+      <li><a href="{{href}}" class="transition-colors duration-300 hover:text-white">{{label}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+</footer>

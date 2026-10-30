@@ -1,0 +1,25 @@
+<section class="mx-auto max-w-md px-5 py-14 sm:py-20" aria-labelledby="register-title">
+  <div class="animate-fade-up rounded-2xl border border-pulse-border bg-pulse-surface/80 p-8 shadow-2xl shadow-black/30 backdrop-blur">
+    <h1 id="register-title" class="text-3xl font-extrabold">Register for an event</h1>
+    <p class="mt-2 text-pulse-muted">Enter your details to save your place.</p>
+
+    <form id="register-form" class="mt-8">
+      <label class="form-label" for="username">Your name</label>
+      <input class="field" id="username" name="username" type="text" autocomplete="name" required>
+
+      <label class="form-label" for="eventName">Event</label>
+      <select class="field" id="eventName" name="eventName" required>
+        <option value="" selected disabled>Choose an event</option>
+        {{#each events}}
+        <option value="{{title}}">{{title}}</option>
+        {{/each}}
+      </select>
+
+      <label class="form-label" for="enrollment">Enrollment number</label>
+      <input class="field" id="enrollment" name="enrollment" type="text" autocomplete="off" required>
+
+      <button class="btn-primary w-full" type="submit">Complete registration</button>
+      <p id="form-message" class="mt-4 min-h-6 text-center text-sm text-pulse-muted" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

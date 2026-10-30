@@ -1,0 +1,13 @@
+{{!-- Page-load intro: PUL [bar] SE  ->  bar stretches  ->  floods the screen  ->  curtain lifts.
+      The words come from "introText" in views/data/site.json. All timing is in styles/tailwind.input.css. --}}
+<div id="intro" class="intro" role="presentation">
+  <div class="intro-row" aria-hidden="true">
+    <span class="intro-word intro-left">{{introText.left}}</span>
+    <span class="intro-bar">
+      <span class="intro-stripes"></span>
+      <span class="intro-block"></span>
+    </span>
+    <span class="intro-word intro-right">{{introText.right}}</span>
+  </div>
+  <button id="intro-skip" type="button" class="absolute bottom-6 right-6 rounded-full border border-pulse-border px-4 py-1.5 text-xs uppercase tracking-widest text-pulse-muted transition-colors duration-300 hover:border-pulse-accent2 hover:text-white">Skip intro</button>
+</div>

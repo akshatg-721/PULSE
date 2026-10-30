@@ -1,0 +1,119 @@
+{{!-- PULSE / editorial-futurist homepage --}}
+<section class="hero-shell" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker reveal">
+      <span class="status-dot"></span>
+      <span>THE CAMPUS, IN MOTION</span>
+      <span class="kicker-line"></span>
+      <span class="kicker-year">EST. 2026</span>
+    </div>
+
+    <div class="hero-composition">
+      <div class="hero-copy">
+        <p class="hero-overline reveal">BML MUNJAL UNIVERSITY <span>—</span> CAMPUS CULTURE PLATFORM</p>
+        <h1 class="hero-title" aria-label="The heartbeat of campus">
+          <span class="hero-line hero-line-one"><span class="hero-word reveal">THE</span></span>
+          <span class="hero-line hero-line-two"><span class="hero-word reveal">HEARTBEAT<span class="hero-period">.</span></span></span>
+          <span class="hero-line hero-line-three"><span class="hero-word reveal">OF <em>CAMPUS.</em></span></span>
+        </h1>
+        <div class="hero-bottom reveal">
+          <p>Find your people. Catch the moment.<br>Make campus yours.</p>
+          <div class="hero-actions">
+            <a class="btn-primary magnetic" href="#events">Explore what's on <span aria-hidden="true">↗</span></a>
+            <a class="hero-text-link" href="/index/reels.html">Enter the feed <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-art-label label-top">PULSE / 001<br>LIVE CAMPUS SIGNAL</div>
+        <div class="chrome-orb-wrap" data-parallax="0.12">
+          <div class="chrome-orb">
+            <div class="orb-highlight"></div>
+            <div class="orb-ring orb-ring-one"></div>
+            <div class="orb-ring orb-ring-two"></div>
+            <div class="orb-cut"></div>
+          </div>
+          <div class="orb-shadow"></div>
+        </div>
+        <div class="hero-stamp">SEE IT<br><span>FEEL IT</span><br>JOIN IT</div>
+        <div class="hero-art-label label-bottom">A NEW FREQUENCY<br>OF CAMPUS LIFE <span>↗</span></div>
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+      </div>
+    </div>
+
+    <div class="hero-meta reveal">
+      <span>DISCOVER WHAT'S HAPPENING AROUND YOU</span>
+      <a href="#manifesto" class="scroll-cue"><span class="scroll-cue-line"></span> SCROLL TO EXPLORE</a>
+      <span class="hero-index">01 — 04</span>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto-section" id="manifesto">
+  <div class="manifesto-top reveal"><span>01 / THE PULSE OF CAMPUS</span><span>MORE THAN A NOTICEBOARD</span></div>
+  <div class="manifesto-copy">
+    <p class="manifesto-eyebrow reveal">YOUR CAMPUS ISN'T QUIET.</p>
+    <h2 class="manifesto-heading"><span class="reveal">IT'S A WHOLE</span><span class="manifesto-highlight reveal">WORLD <i>HAPPENING.</i></span></h2>
+    <div class="manifesto-foot reveal"><p>From late-night build sessions to the loudest front-row moments — find the people, places and experiences that make university unforgettable.</p><a href="/index/about.html" class="circle-link" aria-label="Discover PULSE">↗</a></div>
+  </div>
+</section>
+
+<section class="events-section" id="events" aria-labelledby="events-heading">
+  <div class="events-heading-wrap">
+    <div class="section-index reveal"><span>02 / DON'T MISS A THING</span><span>{{events.length}} SIGNALS ON THE RADAR</span></div>
+    <div class="events-heading-row">
+      <h2 id="events-heading" class="section-heading reveal">UP NEXT<span>↘</span></h2>
+      <p class="events-instruction reveal"><span class="desktop-instruction">SCROLL TO MOVE THROUGH EVENTS&nbsp; ↔</span><span class="mobile-instruction">SWIPE TO EXPLORE&nbsp; →</span></p>
+    </div>
+  </div>
+  <div class="horizontal-stage" data-horizontal-stage>
+    <div class="horizontal-viewport">
+      <div class="horizontal-track" data-horizontal-track>
+        {{#each events}}
+        <article class="event-panel" data-tilt>
+          <div class="event-panel-visual event-visual-{{@index}}">
+            <div class="event-visual-grain"></div>
+            <span class="event-visual-index">P / 0{{add @index 1}}</span>
+            <span class="event-visual-word">{{#if @first}}CREATE{{else}}CONNECT{{/if}}</span>
+            <div class="event-date-block"><strong>{{day}}</strong><span>{{month}}</span></div>
+            <span class="event-visual-arrow">↗</span>
+          </div>
+          <div class="event-panel-info">
+            <div class="event-meta"><span>{{club}}</span><span>{{time}} · SAMPLE LISTING</span></div>
+            <h3>{{title}}</h3>
+            <div class="event-panel-bottom"><span>{{venue}}</span><a href="/index/register.html" aria-label="Register for {{title}}">GET IN <b>↗</b></a></div>
+          </div>
+        </article>
+        {{/each}}
+        <a class="event-more-panel" href="/index/reels.html"><span class="more-kicker">THERE'S MORE OUT THERE</span><strong>DON'T JUST<br>HEAR ABOUT IT.</strong><span class="more-link">EXPLORE THE FEED&nbsp; ↗</span><span class="more-asterisk">✳</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="events-progress"><span class="events-progress-label">KEEP EXPLORING</span><div class="progress-rail"><span data-progress-bar></span></div><span class="events-progress-count">01 — 0{{events.length}}</span></div>
+</section>
+
+<section class="clubs-section" id="clubs">
+  <div class="clubs-topline reveal"><span>03 / FIND YOUR FREQUENCY</span><span>GOOD THINGS HAPPEN TOGETHER</span></div>
+  <div class="clubs-intro"><h2 class="section-heading reveal">YOUR PEOPLE.<br><span>YOUR SCENE.</span></h2><p class="reveal">A campus is only as exciting as the communities that fill it. Find the crew that feels like yours.</p></div>
+  <div class="club-list">
+    {{#each featuredClubs}}
+    <a href="/index/clubs.html" class="club-row reveal"><span class="club-number">0{{add @index 1}}</span><span class="club-name">{{name}}</span><span class="club-description">{{blurb}}</span><span class="club-meta">{{meta}}</span><span class="club-arrow">↗</span></a>
+    {{/each}}
+  </div>
+  <a class="all-clubs-link reveal" href="/index/clubs.html">MEET ALL THE CLUBS <span>↗</span></a>
+</section>
+
+<section class="final-cta-section">
+  <div class="cta-grid" aria-hidden="true"></div>
+  <div class="cta-content">
+    <span class="cta-kicker reveal">04 / YOUR NEXT CHAPTER STARTS HERE</span>
+    <h2 class="cta-heading"><span class="reveal">DON'T WATCH</span><span class="reveal">CAMPUS LIFE.</span><em class="reveal">LIVE IT.</em></h2>
+    <a href="/index/signup.html" class="cta-button magnetic reveal">FIND YOUR MOMENT <span>↗</span></a>
+  </div>
+  <div class="cta-orb" aria-hidden="true"></div>
+  <span class="cta-side-note">SEE IT. FEEL IT. JOIN IT.</span>
+</section>

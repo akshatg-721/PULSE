@@ -1,0 +1,21 @@
+<section class="mx-auto max-w-6xl px-5 py-16 sm:px-10 sm:py-20">
+  <h1 class="animate-fade-up text-4xl font-extrabold sm:text-6xl">Meet Our Team</h1>
+  <p class="mt-4 max-w-2xl animate-fade-up text-lg text-pulse-muted [animation-delay:150ms]">
+    Meet the people behind our project. We work together to design, develop, test, and manage our platform.
+  </p>
+
+  <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {{#each team}}
+    <div class="reveal" style="transition-delay: {{stagger @index}}">
+      <article class="card group flex h-full flex-col items-start">
+        <div class="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-pulse-accent to-pulse-accent2 text-2xl font-extrabold shadow-lg shadow-pulse-accent/20 transition duration-300 group-hover:rotate-6 group-hover:scale-110">
+          {{initials}}
+        </div>
+        <h2 class="mt-5 text-xl font-bold">{{name}}</h2>
+        <p class="mt-1 flex-1 text-pulse-muted">{{role}}</p>
+        <a class="btn-primary mt-6 !py-2" href="{{linkedin}}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </article>
+    </div>
+    {{/each}}
+  </div>
+</section>

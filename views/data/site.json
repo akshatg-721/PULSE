@@ -1,0 +1,333 @@
+{
+  "siteName": "PULSE",
+  "university": "BML Munjal University",
+  "introText": {
+    "left": "PUL",
+    "right": "SE"
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Events",
+      "href": "/#events"
+    },
+    {
+      "label": "Reels",
+      "href": "/index/reels.html"
+    },
+    {
+      "label": "Clubs",
+      "href": "/index/clubs.html"
+    },
+    {
+      "label": "About",
+      "href": "/index/about.html"
+    },
+    {
+      "label": "Team",
+      "href": "/index/team.html"
+    }
+  ],
+  "events": [
+    {
+      "club": "ACM Student Chapter",
+      "title": "GLITCH — Computing & Innovation Fest",
+      "day": "21",
+      "month": "Nov",
+      "time": "10:00 AM",
+      "venue": "BMU Campus",
+      "thumb": "from-blue-500 via-indigo-600 to-violet-700",
+      "sample": true
+    },
+    {
+      "club": "Sci-Mat",
+      "title": "SURGE (KBC 3.0)",
+      "day": "28",
+      "month": "Nov",
+      "time": "11:00 AM",
+      "venue": "BMU Campus",
+      "thumb": "from-cyan-500 via-sky-600 to-blue-700",
+      "sample": true
+    },
+    {
+      "club": "TSEC – The Startup and Entrepreneurship Club",
+      "title": "Startup Pitch Day",
+      "day": "5",
+      "month": "Dec",
+      "time": "2:00 PM",
+      "venue": "BMU Campus",
+      "thumb": "from-fuchsia-500 via-purple-600 to-indigo-700",
+      "sample": true
+    }
+  ],
+  "featuredClubs": [
+    {
+      "name": "ACM Student Chapter",
+      "blurb": "Computing research, coding competitions, technical workshops and hackathons. Flagship event: GLITCH.",
+      "meta": "Technology · Research Wing"
+    },
+    {
+      "name": "Sci-Mat",
+      "blurb": "Science, technology and innovation, connecting theory with real-world applications. Flagship event: SURGE (KBC 3.0).",
+      "meta": "Science · 200+ Open.Sourcery paid registrations"
+    },
+    {
+      "name": "Agraga – The HR & IR Club",
+      "blurb": "Explore people, workplace culture, human resources and industrial relations.",
+      "meta": "People · HR & IR"
+    }
+  ],
+  "clubs": [
+    {
+      "name": "ACM Student Chapter",
+      "category": "Technology & Computing",
+      "tagline": "Advancing Computing as a Science & Profession",
+      "blurb": "A student community for computing research, education and practice, bringing learners together through coding competitions, technical workshops, design sprints, research discussions and hackathons.",
+      "description": "The ACM Student Chapter is one of BMU's largest student communities. Its activities span coding competitions, technical workshops, design sprints, research discussions, hackathons and interdisciplinary showcases. In 2025, it received an Honorable Mention for Best Emerging Student Chapter, launched a dedicated Research Wing and introduced an automated attendance system through TrACMe.",
+      "flagshipEvent": "GLITCH",
+      "sourceStatus": "Based on Nexus screenshots"
+    },
+    {
+      "name": "Agraga – The HR & IR Club",
+      "category": "Human Resources & Industrial Relations",
+      "tagline": "People, workplaces and the future of work",
+      "blurb": "A community exploring human resources, industrial relations, workplace culture and people-focused leadership through discussions, activities and collaborative learning.",
+      "description": "Agraga brings students together to explore how people, teams and organisations work. The club's activities can include conversations on workplace culture, talent management, industrial relations, leadership and professional development.",
+      "flagshipEvent": "People & Workplace Sessions",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Automobile Club",
+      "category": "Automotive & Engineering",
+      "tagline": "Explore the engineering behind motion",
+      "blurb": "A space for automotive enthusiasts to explore vehicle technology, mechanical systems, mobility trends and hands-on engineering ideas.",
+      "description": "The Automobile Club connects students interested in cars, bikes and mobility engineering through technical discussions, vehicle showcases, design challenges and explorations of automotive technology.",
+      "flagshipEvent": "Auto Expo & Tech Meet",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Blaze",
+      "category": "Dance & Performance",
+      "tagline": "Move with the rhythm",
+      "blurb": "A performance community for students who enjoy dance, choreography, stage expression and collaborative routines.",
+      "description": "Blaze is imagined as a high-energy dance community where students can learn choreography, practise different styles, collaborate on performances and take the stage at campus events.",
+      "flagshipEvent": "Blaze Showcase",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "BMU Robotics Club",
+      "category": "Robotics & Technology",
+      "tagline": "Build it. Code it. Bring it to life.",
+      "blurb": "A hands-on community exploring robotics, automation, embedded systems and intelligent machines through collaborative projects.",
+      "description": "BMU Robotics Club brings together makers and technology enthusiasts to experiment with robots, sensors, electronics, control systems and automation through practical builds and technical challenges.",
+      "flagshipEvent": "Robotics Challenge",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Culinary Club",
+      "category": "Food & Culinary Arts",
+      "tagline": "A campus made of flavour",
+      "blurb": "A community for food lovers to explore cooking, culinary creativity, food culture and shared experiences.",
+      "description": "The Culinary Club celebrates food through cooking sessions, tasting experiences, recipe experiments and events that bring people together around different cuisines and culinary traditions.",
+      "flagshipEvent": "Campus Cook-Off",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Enactus BMU",
+      "category": "Social Entrepreneurship",
+      "tagline": "Turning ideas into impact",
+      "blurb": "A student community focused on entrepreneurial action, social innovation and sustainable solutions to real-world challenges.",
+      "description": "Enactus BMU encourages students to identify community challenges and develop entrepreneurial projects that aim to create sustainable social and economic impact.",
+      "flagshipEvent": "Social Innovation Showcase",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Finonomics Club",
+      "category": "Finance & Economics",
+      "tagline": "Understand markets. Think beyond numbers.",
+      "blurb": "A community exploring finance, economics, markets, business news and practical financial literacy.",
+      "description": "Finonomics Club gives students a platform to discuss economic ideas, financial markets, investing concepts, business trends and the forces shaping the global economy.",
+      "flagshipEvent": "Finonomics Summit",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Insights Club",
+      "category": "Analytics & Strategy",
+      "tagline": "Curiosity backed by evidence",
+      "blurb": "A student community for analytical thinking, research, problem-solving and making sense of information.",
+      "description": "Insights Club brings curious students together to explore data, research, business problems and structured decision-making through discussions, case activities and collaborative projects.",
+      "flagshipEvent": "Insights Case Challenge",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "LIQuID",
+      "category": "Literature & Debate",
+      "tagline": "Ideas flow. Perspectives collide.",
+      "blurb": "A creative space for students interested in literature, language, discussion, writing and the exchange of ideas.",
+      "description": "LIQuID is presented as a platform for literary expression and thoughtful conversation, with opportunities for writing, reading, spoken-word activities and discussions across perspectives.",
+      "flagshipEvent": "Open Mic & Literary Night",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Mrityunjaya – The Theatre Society",
+      "category": "Theatre & Performing Arts",
+      "tagline": "Stories deserve a stage",
+      "blurb": "A theatre community exploring acting, direction, stagecraft, storytelling and live performance.",
+      "description": "Mrityunjaya brings together students who enjoy theatre and storytelling, creating opportunities to develop acting skills, work behind the scenes and stage productions for the campus community.",
+      "flagshipEvent": "Annual Stage Production",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Nazariya",
+      "category": "Film & Visual Storytelling",
+      "tagline": "See the world from another frame",
+      "blurb": "A creative community exploring cinema, visual narratives, photography, filmmaking and thoughtful media expression.",
+      "description": "Nazariya offers a space for students to explore visual storytelling through film appreciation, creative projects, screenings, photography and conversations about the stories images can tell.",
+      "flagshipEvent": "Short Film Showcase",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "NSS BMU",
+      "category": "Community Service",
+      "tagline": "Not me, but you",
+      "blurb": "A volunteer community focused on social responsibility, community engagement and service-led initiatives.",
+      "description": "NSS BMU encourages students to contribute to society through volunteering, awareness campaigns, community outreach, environmental activities and service initiatives.",
+      "flagshipEvent": "Community Outreach Drive",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "PAC – Photography & Cinematography Club",
+      "category": "Photography & Film",
+      "tagline": "Capture moments. Create stories.",
+      "blurb": "A community for photographers and filmmakers to learn visual techniques, experiment with equipment and tell stories through images and video.",
+      "description": "PAC brings together students interested in photography and cinematography through photo walks, filmmaking exercises, editing sessions, visual challenges and creative collaborations.",
+      "flagshipEvent": "Frame by Frame",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "PFA – The Performing Arts Club",
+      "category": "Performing Arts",
+      "tagline": "Find your expression",
+      "blurb": "A platform for students to explore performance, music, dance, theatre and other forms of creative expression.",
+      "description": "PFA celebrates performing arts by creating opportunities for students to practise, collaborate and perform across a range of artistic disciplines at campus events and showcases.",
+      "flagshipEvent": "PFA Stage Showcase",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "SATA – Science and Technology",
+      "category": "Science & Technology",
+      "tagline": "Explore what comes next",
+      "blurb": "A student community for exploring scientific ideas, emerging technologies and practical innovation.",
+      "description": "SATA encourages curiosity about science and technology through knowledge-sharing sessions, demonstrations, collaborative projects and conversations about new developments.",
+      "flagshipEvent": "Science & Technology Expo",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "SAVERA",
+      "category": "Social Impact & Community",
+      "tagline": "Small actions. Brighter tomorrows.",
+      "blurb": "A community-oriented club encouraging awareness, inclusion, volunteering and positive action on campus and beyond.",
+      "description": "SAVERA is presented as a student platform for community participation and social awareness, bringing people together around initiatives that support a more informed and caring society.",
+      "flagshipEvent": "Savera Social Initiative",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Sci-Mat",
+      "category": "Science & Mathematics",
+      "tagline": "Your Gateway to Scientific Brilliance",
+      "blurb": "A welcoming community for curious minds passionate about science, technology and innovation, connecting theoretical knowledge with real-world applications.",
+      "description": "Sci-Mat offers a platform to learn, explore and connect across scientific and technological interests. Its profile highlights Open.Sourcery, which recorded 200+ paid registrations and was described as the club's highest paid-registration record.",
+      "flagshipEvent": "SURGE (KBC 3.0)",
+      "sourceStatus": "Based on Nexus screenshots"
+    },
+    {
+      "name": "Sierra",
+      "category": "Outdoor & Adventure",
+      "tagline": "Step outside your comfort zone",
+      "blurb": "A community for students interested in outdoor experiences, exploration, adventure and shared challenges.",
+      "description": "Sierra is presented as an adventure-oriented student community that can bring people together through outdoor activities, exploration, team challenges and experiences beyond the classroom.",
+      "flagshipEvent": "Sierra Adventure Day",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "SMC – Social Media Club",
+      "category": "Media & Digital Communication",
+      "tagline": "Create. Connect. Communicate.",
+      "blurb": "A creative community exploring digital storytelling, social platforms, content strategy and online communication.",
+      "description": "SMC gives students a space to experiment with social media content, creative campaigns, digital trends, branding and community engagement across online platforms.",
+      "flagshipEvent": "Content Creators Meetup",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Strokes",
+      "category": "Art & Design",
+      "tagline": "Make ideas visible",
+      "blurb": "A creative community for artists and designers to experiment with visual art, illustration, craft and creative expression.",
+      "description": "Strokes brings together students who enjoy making and sharing art, with opportunities to explore different media, develop visual skills and collaborate on creative displays.",
+      "flagshipEvent": "Strokes Art Showcase",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "TSEC – The Startup and Entrepreneurship Club",
+      "category": "Entrepreneurship & Startups",
+      "tagline": "From ideas to ventures",
+      "blurb": "A community for aspiring founders and innovators to explore entrepreneurship, business models, pitching and startup culture.",
+      "description": "TSEC encourages entrepreneurial thinking through ideation activities, startup conversations, pitch practice, founder interactions and opportunities to develop early-stage ideas.",
+      "flagshipEvent": "Startup Pitch Day",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "Wellness Tribe",
+      "category": "Wellbeing & Lifestyle",
+      "tagline": "A healthier campus starts together",
+      "blurb": "A supportive community promoting wellbeing, healthy habits, balance and positive campus experiences.",
+      "description": "Wellness Tribe is presented as a space to encourage conversations and activities around wellbeing, mindfulness, healthy routines and building a supportive student community.",
+      "flagshipEvent": "Wellness Week",
+      "sourceStatus": "Generated draft"
+    },
+    {
+      "name": "YRC – Youth Red Cross",
+      "category": "Health & Humanitarian Service",
+      "tagline": "Care in action",
+      "blurb": "A student volunteer community centred on humanitarian values, health awareness, first aid and community service.",
+      "description": "YRC encourages students to participate in service-oriented activities and awareness initiatives, with a focus on compassion, health, preparedness and helping communities.",
+      "flagshipEvent": "Health & First Aid Drive",
+      "sourceStatus": "Generated draft"
+    }
+  ],
+  "team": [
+    {
+      "name": "Kavay Saini",
+      "initials": "KS",
+      "role": "UI/UX & Frontend Developer",
+      "linkedin": "https://www.linkedin.com/in/kavay-saini-88b581388/"
+    },
+    {
+      "name": "Rohit Singh",
+      "initials": "RS",
+      "role": "Frontend Lead",
+      "linkedin": "https://www.linkedin.com/in/rohitsingh22431/"
+    },
+    {
+      "name": "Akshat Goyal",
+      "initials": "AG",
+      "role": "Backend & API Lead",
+      "linkedin": "https://www.linkedin.com/in/akshat-goyal-761069353/"
+    },
+    {
+      "name": "Granth Jain",
+      "initials": "GJ",
+      "role": "Testing, Integrations & Documentation Lead",
+      "linkedin": "https://www.linkedin.com/in/granth-jain12/"
+    },
+    {
+      "name": "Devesh Chauhan",
+      "initials": "DC",
+      "role": "Database & Data Management",
+      "linkedin": "https://www.linkedin.com/in/devesh-chauhan1231/"
+    }
+  ]
+}
