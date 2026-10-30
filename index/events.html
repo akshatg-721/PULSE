@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - PULSE</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="/index/nav.css">
+  <link rel="stylesheet" href="/styles/events.css">
+</head>
+<body>
+  <header id="site-nav"></header>
+
+  <main>
+    <section class="events-hero" aria-labelledby="events-page-heading">
+      <h1 id="events-page-heading">What's On Campus</h1>
+      <p class="events-intro">Browse every upcoming event, filter by category, and grab your spot.</p>
+    </section>
+
+    <section class="events-controls" aria-label="Filter and sort events">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search events, clubs, venues…"
+        aria-label="Search events"
+        autocomplete="off"
+      >
+
+      <div class="filter-buttons" role="group" aria-label="Filter by category">
+        <button class="filter-btn active" data-category="All"      type="button">All</button>
+        <button class="filter-btn"        data-category="Tech"     type="button">Tech</button>
+        <button class="filter-btn"        data-category="Cultural" type="button">Cultural</button>
+        <button class="filter-btn"        data-category="Sports"   type="button">Sports</button>
+        <button class="filter-btn"        data-category="Workshop" type="button">Workshop</button>
+      </div>
+
+      <div class="sort-row">
+        <label for="sort">Sort by</label>
+        <select id="sort" aria-label="Sort events">
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="events-section" aria-live="polite" aria-label="Events list">
+      <div id="events-grid" class="events-grid"></div>
+      <p id="empty" class="events-empty" hidden>No events match your search.</p>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/index/events.js"></script>
+  <script src="/index/nav.js"></script>
+</body>
+</html>
