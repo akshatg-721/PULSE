@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const root = __dirname;
 const dataFile = path.join(root, "data", "users.json");
 const registrationsFile = path.join(root, "data", "registerations.json");
-const port = Number(process.env.PORT) || 3000;
+const port =  3000;
 const events = [
   "AI Hack Night",
   "Robotics Townhall",
