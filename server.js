@@ -33,6 +33,7 @@ const pages = {
   "/index/signup.js": ["index/signup.js", "text/javascript"],
   "/index/signin.js": ["index/signin.js", "text/javascript"],
   "/index/nav.js": ["index/nav.js", "text/javascript"],
+  "/index/home.js": ["index/home.js", "text/javascript"],
   "/index/nav.css": ["index/nav.css", "text/css"],
   "/index/events.html": ["index/events.html", "text/html"],
   "/index/events.js": ["index/events.js", "text/javascript"],

@@ -9,50 +9,95 @@
 </head>
 <body>
 
+<div class="site-intro" id="site-intro" aria-hidden="true">
+  <div class="intro-content">
+    <div class="intro-symbol"><span></span><span></span><span></span></div>
+    <p class="intro-wordmark">PULSE</p>
+    <p class="intro-caption">Find your campus rhythm</p>
+    <div class="intro-progress"><span></span></div>
+  </div>
+</div>
+
 <header id="site-nav"></header>
 
 <main>
 
-  <section id="hero">
-    <h1>The heartbeat of campus.</h1>
-    <p>Discover what's happening around you — register in a tap and never miss what your clubs are running.</p>
-    <a class="btn" href="#events">Explore Events</a>
+  <section id="hero" class="home-hero" aria-labelledby="hero-heading">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>Your campus, in motion</p>
+      <h1 id="hero-heading">Find your <span>people.</span><br>Find your next thing.</h1>
+      <p class="hero-description">Discover the events, clubs, and little moments that make campus feel like yours.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#events">Explore events <span aria-hidden="true">↗</span></a>
+        <a class="hero-secondary" href="/index/clubs.html">Meet the clubs <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-note">
+        <span class="note-line" aria-hidden="true"></span>
+        <p>Make today a little more yours.</p>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-orbit"></div>
+      <span class="hero-spark hero-spark--one"></span>
+      <span class="hero-spark hero-spark--two"></span>
+      <div class="hero-art-card">
+        <div class="art-card-top"><span>Find your frequency</span><span class="art-card-spark"></span></div>
+        <div class="art-mark"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="art-card-title">There’s a place for you here.</p>
+        <p class="art-card-caption">Show up curious. Leave connected.</p>
+      </div>
+      <div class="art-sticker">MEET<br>YOUR<br>PEOPLE</div>
+    </div>
   </section>
 
-  <section id="events" aria-labelledby="events-heading">
-    <h2 id="events-heading">What's Next?</h2>
+  <section id="events" class="home-section" aria-labelledby="events-heading">
+    <div class="section-heading">
+      <div class="section-heading-copy">
+        <p class="section-kicker">Make a plan</p>
+        <h2 id="events-heading">What’s next?</h2>
+        <p class="section-description">Good things happen when you show up.</p>
+      </div>
+      <span class="section-index">01 / EVENTS</span>
+    </div>
 
     <div class="card-grid">
 
       <article class="card">
-        <div class="card-thumb" role="img" aria-label="AI Hack Night event banner"></div>
+        <div class="card-thumb" role="img" aria-label="Abstract artwork for AI Hack Night"></div>
         <p>BML Tech Club</p>
         <h3>AI Hack Night</h3>
         <p>28 Aug &middot; 6:00 PM &middot; Innovation Lab</p>
-        <a href="/index/register.html">Register &rarr;</a>
+        <a href="/index/register.html">Register</a>
       </article>
 
       <article class="card">
-        <div class="card-thumb" role="img" aria-label="Robotics Townhall event banner"></div>
+        <div class="card-thumb" role="img" aria-label="Abstract artwork for Robotics Townhall"></div>
         <p>Robotics Society</p>
         <h3>Robotics Townhall</h3>
         <p>9 Sept &middot; 5:00 PM &middot; Main Auditorium</p>
-        <a href="/index/register.html">Register &rarr;</a>
+        <a href="/index/register.html">Register</a>
       </article>
 
       <article class="card">
-        <div class="card-thumb" role="img" aria-label="Culinary Club Town Hall event banner"></div>
+        <div class="card-thumb" role="img" aria-label="Abstract artwork for Culinary Club Town Hall"></div>
         <p>Culinary Club</p>
         <h3>Town Hall &mdash; Culinary Club</h3>
         <p>9 Sept &middot; 4:00 PM &middot; Campus Plaza</p>
-        <a href="/index/register.html">Register &rarr;</a>
+        <a href="/index/register.html">Register</a>
       </article>
 
     </div>
   </section>
 
-  <section id="clubs" aria-labelledby="clubs-heading">
-    <h2 id="clubs-heading">Find Your People</h2>
+  <section id="clubs" class="home-section" aria-labelledby="clubs-heading">
+    <div class="section-heading">
+      <div class="section-heading-copy">
+        <p class="section-kicker">Your kind of crowd</p>
+        <h2 id="clubs-heading">Find your people.</h2>
+        <p class="section-description">A shared interest is a pretty great place to start.</p>
+      </div>
+      <span class="section-index">02 / COMMUNITY</span>
+    </div>
 
     <div class="card-grid">
 
@@ -83,5 +128,6 @@
 <footer id="site-footer"></footer>
 
 <script src="/index/nav.js"></script>
+<script src="/index/home.js"></script>
 </body>
 </html>
