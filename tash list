@@ -1,0 +1,16 @@
+[33m352cffd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: pull origin main: Fast-forward
+[33m4a6b2cb[m[33m ([m[1;31morigin/feature/signin-page[m[33m)[m HEAD@{1}: checkout: moving from feature/about-page to main
+[33m5034d88[m[33m ([m[1;32mfeature/about-page[m[33m)[m HEAD@{2}: commit: add images of team members
+[33m352cffd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{3}: pull origin main: Fast-forward
+[33m534f0d6[m HEAD@{4}: pull origin main: Fast-forward
+[33m387e850[m HEAD@{5}: reset: moving to HEAD
+[33m387e850[m HEAD@{6}: pull origin main: Fast-forward
+[33m4ba001a[m HEAD@{7}: pull origin main: Fast-forward
+[33m17810f5[m[33m ([m[1;31morigin/feature/about-page[m[33m)[m HEAD@{8}: commit: Add about page
+[33mdf0882c[m[33m ([m[1;32mfeature/signin-page[m[33m)[m HEAD@{9}: checkout: moving from feature/signin-page to feature/about-page
+[33mdf0882c[m[33m ([m[1;32mfeature/signin-page[m[33m)[m HEAD@{10}: pull origin main: Fast-forward
+[33m9f8835d[m HEAD@{11}: reset: moving to HEAD
+[33m9f8835d[m HEAD@{12}: pull origin main: Fast-forward
+[33m4a6b2cb[m[33m ([m[1;31morigin/feature/signin-page[m[33m)[m HEAD@{13}: checkout: moving from main to feature/signin-page
+[33m4a6b2cb[m[33m ([m[1;31morigin/feature/signin-page[m[33m)[m HEAD@{14}: commit: add sign in check
+[33mf630a8a[m HEAD@{15}: clone: from https://github.com/akshatg-721/PULSE.git

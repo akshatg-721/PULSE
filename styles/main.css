@@ -472,6 +472,24 @@ h2 {
   border-color: rgba(120, 224, 208, 0.3);
 }
 
+.team-section .card-thumb {
+  height: auto;
+  aspect-ratio: 1;
+  background: none;
+}
+
+.team-section .card-thumb::before,
+.team-section .card-thumb::after {
+  content: none;
+}
+
+.team-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card:nth-child(2) .card-thumb {
   background:
     radial-gradient(circle at 68% 32%, rgba(255, 179, 137, 0.82) 0 2%, transparent 2.5%),
