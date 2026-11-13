@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const root = __dirname;
 const dataFile = path.join(root, "data", "users.json");
 const registrationsFile = path.join(root, "data", "registrations.json");
+const contactsFile      = path.join(root, "data", "contacts.json");
 const port = Number(process.env.PORT) || 3000;
 
 function hashPassword(password, salt) {
@@ -32,6 +33,8 @@ const pages = {
   "/assets/team/rohit-singh.png": ["assets/team/rohit-singh.png", "image/png"],
   "/index/register.html": ["index/register.html", "text/html"],
   "/index/register.js": ["index/register.js", "text/javascript"],
+  "/index/contact.html": ["index/contact.html", "text/html"],
+  "/index/contact.js": ["index/contact.js", "text/javascript"],
   "/index/signup.html": ["index/signup.html", "text/html"],
   "/index/signin.html": ["index/signin.html", "text/html"],
   "/index/signup.js": ["index/signup.js", "text/javascript"],
@@ -261,6 +264,82 @@ http.createServer((request, response) => {
 
       response.writeHead(200, { "Content-Type": "application/json" });
       response.end(JSON.stringify({ message: "Account created. You can sign in here later." }));
+    });
+    return;
+  }
+
+  // POST /contact — validate fields, write to data/contacts.json
+  if (request.method === "POST" && request.url === "/contact") {
+    let body = "";
+    request.on("data", (chunk) => body += chunk);
+    request.on("end", () => {
+      // --- Parse fields from the submitted form body ---
+      const form    = new URLSearchParams(body);
+      const name    = form.get("name")?.trim()          ?? "";
+      const email   = form.get("email")?.trim().toLowerCase() ?? "";
+      const subject = form.get("subject")?.trim()       ?? "";
+      const msg     = form.get("message")?.trim()       ?? "";
+
+      // --- Validate; return the first failure as 400 JSON ---
+      const bad = (message, field) => {
+        response.writeHead(400, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message, field }));
+      };
+
+      if (name.length < 2)
+        return bad("Name must be at least 2 characters.", "name");
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        return bad("Enter a valid email address.", "email");
+
+      if (!["Events", "Clubs", "Technical issue", "Other"].includes(subject))
+        return bad("Please choose a valid subject.", "subject");
+
+      if (msg.length < 10 || msg.length > 500)
+        return bad("Message must be between 10 and 500 characters.", "message");
+
+      // --- Read existing contacts (tolerates missing, empty or corrupt file) ---
+      try {
+        fs.mkdirSync(path.dirname(contactsFile), { recursive: true });
+
+        let contacts = [];
+        try {
+          const raw = fs.existsSync(contactsFile)
+            ? fs.readFileSync(contactsFile, "utf8").trim()
+            : "";
+          contacts = raw ? JSON.parse(raw) : [];
+          if (!Array.isArray(contacts)) contacts = [];
+        } catch (_) {
+          contacts = [];   // corrupt file — start fresh
+        }
+
+        // --- Generate a unique MSG-XXXXX reference ---
+        const existingIds = new Set(contacts.map((c) => c.id));
+        let id;
+        do {
+          id = "MSG-" + String(Math.floor(10000 + Math.random() * 90000));
+        } while (existingIds.has(id));
+
+        // --- Append the new record and persist ---
+        const record = {
+          id,
+          name,
+          email,
+          subject,
+          message: msg,
+          createdAt: new Date().toISOString()
+        };
+        contacts.push(record);
+        fs.writeFileSync(contactsFile, JSON.stringify(contacts, null, 2));
+
+        // --- Return success ---
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Message sent.", id }));
+      } catch (error) {
+        console.error("Could not save contact message:", error);
+        response.writeHead(500, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Could not save your message. Please try again." }));
+      }
     });
     return;
   }

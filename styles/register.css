@@ -175,6 +175,45 @@ a {
   color: #b7bdcb;
 }
 
+/* ---------- Textarea (contact page) ---------- */
+/* Matches the input/select styling already in this file. */
+.register-card textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  color: #f2f3f6;
+  background: #131826;
+  border: 1px solid #262d40;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;   /* prevents the browser default monospace font */
+  outline: none;
+  resize: vertical;       /* let the user drag it taller, but not wider */
+  transition: border-color 140ms ease;
+}
+
+.register-card textarea:focus {
+  border-color: #3b82f6;
+}
+
+.register-card textarea.invalid {
+  border-color: #f87171;
+}
+
+.register-card textarea.invalid:focus {
+  border-color: #f87171;
+}
+
+/* Character counter sits flush below the textarea */
+#char-count {
+  display: block;
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #b7bdcb;
+  text-align: right;
+}
+
 /* ---------- Mobile (<= 520px) ---------- */
 @media (max-width: 520px) {
   .register-card {
