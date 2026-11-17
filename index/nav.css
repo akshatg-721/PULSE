@@ -110,6 +110,24 @@
   color: #f3f5f8;
 }
 
+.nav-greeting {
+  color: #a0a9b8;
+  font-size: 14px;
+}
+
+.nav-logout {
+  border: 0;
+  background: transparent;
+  color: #a0a9b8;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav-logout:hover {
+  color: #f3f5f8;
+}
+
 /* "Sign up" is styled as a pill button */
 .nav-btn {
   background: linear-gradient(110deg, #a4adff, #8b9cff) !important;

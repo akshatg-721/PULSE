@@ -4,8 +4,6 @@ const message = document.querySelector("#form-message");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  
-
   message.textContent = "Creating account...";
 
   try {
@@ -13,8 +11,10 @@ form.addEventListener("submit", async (event) => {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
-        email: form.email.value,
-        password: form.password.value
+        name: form.elements.namedItem("name").value,
+        email: form.elements.namedItem("email").value,
+        enrollment: form.elements.namedItem("enrollment").value,
+        password: form.elements.namedItem("password").value
       })
     });
     const result = await response.json();

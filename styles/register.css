@@ -59,6 +59,13 @@ a {
   transition: border-color 140ms ease;
 }
 
+.register-card fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .register-card input:focus,
 .register-card select:focus {
   border-color: #3b82f6;

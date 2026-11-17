@@ -93,6 +93,47 @@ function injectFooter() {
   footerEl.innerHTML = buildFooterHTML();
 }
 
+function updateAuthLinks() {
+  fetch("/api/auth/me")
+    .then(function (response) {
+      if (!response.ok) throw new Error("Could not load account status.");
+      return response.json();
+    })
+    .then(function (result) {
+      if (!result.user) return;
+
+      var auth = document.querySelector(".nav-auth");
+      if (!auth) return;
+      auth.textContent = "";
+
+      var greeting = document.createElement("span");
+      greeting.className = "nav-greeting";
+      greeting.textContent = result.user.name || result.user.email;
+      auth.appendChild(greeting);
+
+      if (result.user.role === "admin") {
+        var adminLink = document.createElement("a");
+        adminLink.href = "/admin";
+        adminLink.textContent = "Admin";
+        auth.appendChild(adminLink);
+      }
+
+      var signout = document.createElement("button");
+      signout.type = "button";
+      signout.className = "nav-logout";
+      signout.textContent = "Sign out";
+      signout.addEventListener("click", function () {
+        fetch("/api/auth/signout", { method: "POST" })
+          .then(function () { window.location.assign("/"); })
+          .catch(function (error) { console.error("Could not sign out:", error); });
+      });
+      auth.appendChild(signout);
+    })
+    .catch(function (error) {
+      console.error("Could not load account status:", error);
+    });
+}
+
 /* ------------------------------------------------------------------ */
 /* initHamburger
  * Adds a click listener to the hamburger button so it toggles the
@@ -136,6 +177,7 @@ function init() {
   injectNav();
   injectFooter();
   initHamburger();
+  updateAuthLinks();
 }
 
 // Run init() as soon as the HTML has been parsed (before images load).
