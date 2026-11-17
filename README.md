@@ -6,13 +6,17 @@ PULSE is a modern campus event discovery and engagement platform designed to bri
 
 Instead of functioning like a traditional college event directory, PULSE combines event discovery, short-form video, online registration, attendance, and club management into one interactive platform.
 
-## Run the sign-up and sign-in demo
+## Run PULSE locally
 
-1. Open a terminal in the `PULSE` folder.
-2. Run `node server.js`.
-3. Open `http://127.0.0.1:3000`.
+1. Install Node.js and MongoDB.
+2. Open a terminal in the `PULSE` folder and run `npm install`.
+3. Configure `MONGODB_URI`, `SESSION_SECRET`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD` in `.env`. The local defaults are documented in `.env.example`; use a new random session secret and a strong admin password outside local development.
+4. Run `npm run migrate:json` once to import the existing data files into MongoDB. The migration is safe to rerun.
+5. Run `npm start` and open `http://127.0.0.1:3000`.
 
-Accounts are saved to `data/users.json`. Passwords are saved as salted hashes, not readable text. Sign in from the home page using an account you created. Open the site through the local server, not by opening the HTML file directly.
+Users, events, registrations, contact messages, and login sessions are stored in MongoDB. The files in `data/` are retained as the source for the one-time migration; the running server does not read or write them. Passwords are stored as salted hashes. The local admin credentials are `admin@pulse.com` / `12345678`; change them in `.env` before deployment. Open the site through the local server, not by opening the HTML file directly.
+
+The admin account is created on server startup from `ADMIN_EMAIL` and `ADMIN_PASSWORD`. Sign in with that account to open `/admin`; event removal archives the event and keeps its registrations and attendance history.
 
 Open the reels page at `http://127.0.0.1:3000/index/reels.html`.
 
@@ -347,7 +351,7 @@ High-level architecture:
                            │
                        FRONTEND
                            │
-                      Next.js App
+                  Static HTML/CSS/JS
                            │
              ┌─────────────┼─────────────┐
              │             │             │
@@ -358,33 +362,16 @@ High-level architecture:
              └─────────────┼─────────────┘
                            │
                        DATABASE
-                       PostgreSQL
+                        MongoDB
 
 💻 Tech Stack
 
-The recommended technology stack is:
+The current technology stack is:
 
-Frontend
-
-Next.js
-
-TypeScript
-
-Tailwind CSS
-
-Framer Motion
-
-Backend
-
-Next.js API / Route Handlers
-
-Server Actions where appropriate
-
-Database
-
-PostgreSQL
-
-Prisma ORM
+- Frontend: HTML, CSS, and browser JavaScript
+- Backend: Node.js and Express
+- Database/ODM: MongoDB and Mongoose
+- Authentication: salted scrypt password hashes and MongoDB-backed sessions
 
 Authentication
 
@@ -394,7 +381,7 @@ Auth.js
 
 Clerk
 
-Authentication should support role-based permissions and, if required, college email restrictions.
+The current backend uses salted scrypt password hashes and MongoDB-backed sessions. Student accounts include a name, email, enrollment number, and password. Admin routes require the seeded admin role.
 
 Media
 
@@ -628,15 +615,7 @@ Important CTAs remain easily reachable
 
 🔐 Authentication
 
-Authentication should support:
-
-Student login
-
-Admin login
-
-Role-based access
-
-Protected dashboard routes
+Student and admin sign-in, role checks, protected admin routes, and sign-out are implemented.
 
 College email verification if required
 

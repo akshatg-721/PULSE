@@ -1,5 +1,8 @@
 const form = document.querySelector("#register-form");
 const message = document.querySelector("#confirmation");
+const profileForm = document.querySelector("#profile-completion");
+const profileMessage = document.querySelector("#profile-message");
+const accountDetails = document.querySelector("#account-details");
 const eventSelect = form.elements.namedItem("eventName");
 const requestedEvent = new URLSearchParams(window.location.search).get("event");
 
@@ -64,9 +67,61 @@ async function loadEvents() {
   }
 }
 
-loadEvents().catch((error) => {
-  console.error("Could not load events for registration:", error);
-  showMessage(error.message || "Could not load events. Please try again.", true);
+function showProfile(user) {
+  accountDetails.textContent = `${user.name} · ${user.email} · ${user.enrollment}`;
+  profileForm.hidden = true;
+  document.querySelector("#registration-fields").disabled = false;
+  form.hidden = false;
+  loadEvents().catch((error) => {
+    console.error("Could not load events for registration:", error);
+    showMessage(error.message || "Could not load events. Please try again.", true);
+  });
+}
+
+profileForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  profileMessage.textContent = "Saving your profile...";
+  try {
+    const response = await fetch("/api/auth/profile", {
+      method: "PUT",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        name: profileForm.elements.namedItem("name").value,
+        enrollment: profileForm.elements.namedItem("enrollment").value
+      })
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.message || "Could not update your profile.");
+    showProfile(result.user);
+  } catch (error) {
+    profileMessage.textContent = error.message || "Could not update your profile.";
+  }
+});
+
+async function checkSignedInUser() {
+  const response = await fetch("/api/auth/me");
+  if (!response.ok) throw new Error("Could not check your sign-in status.");
+  const result = await response.json();
+  if (!result.user) {
+    const next = window.location.pathname + window.location.search;
+    window.location.assign(`/index/signin.html?next=${encodeURIComponent(next)}`);
+    return;
+  }
+
+  if (!result.user.name || !result.user.enrollment) {
+    form.hidden = true;
+    profileForm.hidden = false;
+    profileForm.elements.namedItem("name").value = result.user.name || "";
+    document.querySelector("#registration-fields").disabled = true;
+    return;
+  }
+
+  showProfile(result.user);
+}
+
+checkSignedInUser().catch((error) => {
+  console.error("Could not check sign-in status:", error);
+  showMessage(error.message || "Please sign in before registering.", true);
 });
 
 form.addEventListener("submit", async (event) => {

@@ -19,6 +19,12 @@ form.addEventListener("submit", async (event) => {
     if (!response.ok) throw new Error(result.message);
     message.textContent = result.message;
     form.reset();
+    const requestedPath = new URLSearchParams(window.location.search).get("next");
+    const nextPath = requestedPath && requestedPath.startsWith("/")
+      && !requestedPath.startsWith("//")
+      ? requestedPath
+      : "/";
+    window.location.assign(result.user.role === "admin" ? "/admin" : nextPath);
   } catch (error) {
     message.textContent = error.message || "Could not sign in. Please try again.";
   }

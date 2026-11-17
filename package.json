@@ -4,8 +4,16 @@
   "description": "PULSE",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "node --test",
+    "start": "node server.js",
+    "migrate:json": "node scripts/migrate-json-to-mongo.js"
+  },
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.19.1"
   },
   "repository": {
     "type": "git",

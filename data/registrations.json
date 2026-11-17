@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "PULSE-55464",
+    "name": "Devesh Chauhan",
+    "email": "devesh.chauhan.25cse@bmu.edu.in",
+    "phone": "1234567890",
+    "course": "Btech",
+    "year": "2",
+    "enrollment": "123456",
+    "eventName": "Robotics Townhall",
+    "createdAt": "2026-11-12T04:10:49.286Z"
+  },
+  {
+    "id": "PULSE-39660",
+    "name": "Devesh Chauhan",
+    "email": "devesh.chauhan.25cse@bmu.edu.in",
+    "phone": "1234567890",
+    "course": "Btech",
+    "year": "2",
+    "enrollment": "123456",
+    "eventName": "AI Hack Night",
+    "createdAt": "2026-11-12T04:12:27.297Z"
+  },
+  {
+    "id": "PULSE-41298",
+    "name": "Devesh Chauhan",
+    "email": "deveshchauhan1.2.3.1@gmail.com",
+    "phone": "1234561230",
+    "course": "BTech",
+    "year": "2",
+    "enrollment": "123456",
+    "eventName": "Open Source Sprint",
+    "createdAt": "2026-11-12T04:41:37.221Z"
+  }
+]
